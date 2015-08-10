@@ -1,7 +1,7 @@
 {
   "name": "npm-autoinit",
   "version": "0.0.0",
-  "description": "Silence EPACKAGEJSON warnings for npm",
+  "description": "Silence \"ENOENT package.json\" warnings for npm",
   "author": "Eugene Sharygin <eush77@gmail.com>",
   "license": "MIT",
   "preferGlobal": true,
@@ -28,7 +28,9 @@
     "init",
     "npm",
     "package.json",
+    "quiet",
     "scaffold",
+    "silence",
     "stub",
     "warnings"
   ],
