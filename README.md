@@ -24,18 +24,28 @@ $ npm ls
 npm ERR! error in /tmp/tmpdir/R3semq: ENOENT: no such file or directory, open '/tmp/tmpdir/R3semq/package.json'
 ```
 
-I often [use temporary directories][tmpdir] to play/experiment with packages and hustling with `package.json` every time I want to install some package is not an option for me.
+I often [use temporary directories][tmpdir] to play/experiment with packages and hustling with `package.json` every time I want to check out some package is not an option for me.
 
 This module will make npm run `npm init --yes` automatically for you if it sees fit.
 
-See npm/npm#9161.
+See https://github.com/npm/npm/issues/9161.
 
-[tmpdir]: https://github.com/eush77/tmpdir.fish
+[tmpdir]: https://github.com/eush77/fish-tmpdir
 
 [travis]: https://travis-ci.org/eush77/npm-autoinit
 [travis-badge]: https://travis-ci.org/eush77/npm-autoinit.svg
 [david]: https://david-dm.org/eush77/npm-autoinit
 [david-badge]: https://david-dm.org/eush77/npm-autoinit.png
+
+## How
+
+This package takes advantage of `onload-script` npm config option.
+
+> A node module to require() when npm loads.  Useful for programmatic usage.
+
+`onload-script` executes before any work on npm command is done, so if we create `package.json` file here (and [block]) the problem is solved.
+
+[block]: https://github.com/eush77/npm-autoinit/blob/master/autoinit.js#L6
 
 ## Install
 
