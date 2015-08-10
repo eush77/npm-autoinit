@@ -1,0 +1,29 @@
+{
+  "name": "npm-autoinit",
+  "version": "0.0.0",
+  "description": "Silence EPACKAGEJSON warnings for npm",
+  "author": "Eugene Sharygin <eush77@gmail.com>",
+  "license": "MIT",
+  "preferGlobal": true,
+  "files": [
+    "index.js"
+  ],
+  "homepage": "https://github.com/eush77/npm-autoinit",
+  "repository": "eush77/npm-autoinit",
+  "bugs": {
+    "url": "https://github.com/eush77/npm-autoinit/issues"
+  },
+  "keywords": [
+    "enoent",
+    "epackagejson",
+    "errors",
+    "init",
+    "npm",
+    "npm",
+    "package.json",
+    "stub",
+    "warnings"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}
