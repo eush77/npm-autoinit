@@ -5,12 +5,13 @@
   "author": "Eugene Sharygin <eush77@gmail.com>",
   "license": "MIT",
   "preferGlobal": true,
-  "main": "autoinit.js",
   "scripts": {
     "test": "tape test/*.js"
   },
   "files": [
-    "autoinit.js"
+    "autoinit.js",
+    "index.js",
+    "init.js"
   ],
   "homepage": "https://github.com/eush77/npm-autoinit",
   "repository": "eush77/npm-autoinit",

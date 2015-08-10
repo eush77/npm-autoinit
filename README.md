@@ -35,17 +35,23 @@ See npm/npm#9161.
 [david]: https://david-dm.org/eush77/npm-autoinit
 [david-badge]: https://david-dm.org/eush77/npm-autoinit.png
 
+## Install
+
+```
+$ npm install -g npm-autoinit
+```
+
+After that, add `npm-autoinit/autoinit` as npm onload script:
+
+```
+$ npm config set onload-script npm-autoinit/autoinit
+```
+
 ## API
 
 #### `autoinit(dir, cb(err))`
 
 Check if `package.json` is present, and if it's not run `npm init -y`.
-
-## Install
-
-```
-npm install -g npm-autoinit
-```
 
 ## License
 
