@@ -2,7 +2,7 @@
 
 # npm-autoinit
 
-[![Dependency Status][david-badge]][david]
+[![Build Status][travis-badge]][travis] [![Dependency Status][david-badge]][david]
 
 If you miss `package.json` in the directory `npm` is working in, it will complain.
 
@@ -32,6 +32,8 @@ See npm/npm#9161.
 
 [tmpdir]: https://github.com/eush77/tmpdir.fish
 
+[travis]: https://travis-ci.org/eush77/npm-autoinit
+[travis-badge]: https://travis-ci.org/eush77/npm-autoinit.svg
 [david]: https://david-dm.org/eush77/npm-autoinit
 [david-badge]: https://david-dm.org/eush77/npm-autoinit.png
 
