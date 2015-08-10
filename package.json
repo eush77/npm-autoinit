@@ -1,6 +1,6 @@
 {
   "name": "npm-autoinit",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Silence \"ENOENT package.json\" warnings for npm",
   "author": "Eugene Sharygin <eush77@gmail.com>",
   "license": "MIT",
