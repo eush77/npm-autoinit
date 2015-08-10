@@ -5,8 +5,12 @@
   "author": "Eugene Sharygin <eush77@gmail.com>",
   "license": "MIT",
   "preferGlobal": true,
+  "main": "autoinit.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
   "files": [
-    "index.js"
+    "autoinit.js"
   ],
   "homepage": "https://github.com/eush77/npm-autoinit",
   "repository": "eush77/npm-autoinit",
@@ -14,16 +18,25 @@
     "url": "https://github.com/eush77/npm-autoinit/issues"
   },
   "keywords": [
+    "auto",
+    "boilerplate",
     "enoent",
     "epackagejson",
     "errors",
+    "generate",
     "init",
     "npm",
-    "npm",
     "package.json",
+    "scaffold",
     "stub",
     "warnings"
   ],
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "find-root": "^0.1.1",
+    "init-package-json": "^1.7.1"
+  },
+  "devDependencies": {
+    "rewire": "^2.3.4",
+    "tape": "^4.0.3"
+  }
 }
