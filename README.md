@@ -6,7 +6,23 @@
 
 If you miss `package.json` in the directory `npm` is working in, it will complain.
 
-<insert complains>
+```
+$ npm install thingy
+…
+npm WARN ENOENT ENOENT: no such file or directory, open '/tmp/tmpdir/R3semq/package.json'
+npm WARN EPACKAGEJSON /tmp/tmpdir/R3semq No description
+npm WARN EPACKAGEJSON /tmp/tmpdir/R3semq No repository field.
+npm WARN EPACKAGEJSON /tmp/tmpdir/R3semq No README data
+npm WARN EPACKAGEJSON /tmp/tmpdir/R3semq No license field.
+```
+
+Or even:
+
+```
+$ npm ls
+…
+npm ERR! error in /tmp/tmpdir/R3semq: ENOENT: no such file or directory, open '/tmp/tmpdir/R3semq/package.json'
+```
 
 I often [use temporary directories][tmpdir] to play/experiment with packages and hustling with `package.json` every time I want to install some package is not an option for me.
 
@@ -18,6 +34,12 @@ See npm/npm#9161.
 
 [david]: https://david-dm.org/eush77/npm-autoinit
 [david-badge]: https://david-dm.org/eush77/npm-autoinit.png
+
+## API
+
+#### `autoinit(dir, cb(err))`
+
+Check if `package.json` is present, and if it's not run `npm init -y`.
 
 ## Install
 
