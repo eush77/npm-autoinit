@@ -43,9 +43,9 @@ This package takes advantage of `onload-script` npm config option.
 
 > A node module to require() when npm loads.  Useful for programmatic usage.
 
-`onload-script` executes before any work on npm command is done, so if we create `package.json` file here (and [block]) the problem is solved.
+`onload-script` executes before any work on npm command is done, so if we create `package.json` file here (and [block] while we do it) the problem is solved.
 
-[block]: https://github.com/eush77/npm-autoinit/blob/master/autoinit.js#L6
+[block]: https://github.com/eush77/npm-autoinit/blob/ba74d4434fba8b1ffa093669de24bb7defb88f6c/autoinit.js#L6
 
 ## Install
 
