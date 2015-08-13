@@ -1,13 +1,32 @@
 'use strict';
 
-var rewire = require('rewire');
-
-var autoinit = rewire('..');
-
 var test = require('tape'),
-    findRoot = require('find-root');
+    rewire = require('rewire'),
+    findRoot = require('find-root'),
+    falafel = require('falafel');
 
-var fs = require('fs');
+var fs = require('fs'),
+    vm = require('vm');
+
+var init = rewire('..'),
+    autoinit = (function (src) {
+      src = falafel(src, function (decl) {
+        if (decl.type == 'VariableDeclarator' && decl.id.name == 'spawnSync') {
+          decl.update('spawned = false, spawnSync = ' + function () {
+            spawned = true;
+          });
+        }
+      }) + ';spawned';
+
+      return function (/* argv */) {
+        return vm.runInNewContext(src, {
+          __dirname: __dirname + '/..',
+          process: {
+            argv: [].slice.call(arguments)
+          }
+        });
+      };
+    }(fs.readFileSync(require.resolve('../autoinit'), 'utf8')));
 
 
 var generatedPackageJson = __dirname + '/package.json';
@@ -22,13 +41,13 @@ var cleanup = function (t) {
 
 
 test('first time', function (t) {
-  autoinit.__set__('findRoot', function () {
+  init.__set__('findRoot', function () {
     throw Error('package.json not found in path');
   });
 
   t.plan(3);
 
-  autoinit(__dirname, function (err) {
+  init(__dirname, function (err) {
     t.ifErr(err);
     fs.stat(generatedPackageJson, function (err, stat) {
       t.ifErr(err);
@@ -41,11 +60,11 @@ test('first time', function (t) {
 
 
 test('second time', function (t) {
-  autoinit.__set__('findRoot', findRoot);
+  init.__set__('findRoot', findRoot);
 
   t.plan(4);
 
-  autoinit(__dirname, function (err) {
+  init(__dirname, function (err) {
     t.ifErr(err);
     fs.stat(generatedPackageJson, function (err, stat) {
       t.ifErr(err);
@@ -53,4 +72,15 @@ test('second time', function (t) {
       cleanup(t);
     });
   });
+});
+
+
+test('respond only to local install', function (t) {
+  t.true(autoinit('node', 'npm', 'i', 'test'), 'npm i');
+  t.true(autoinit('node', 'npm', 'install', 'test'), 'npm install');
+  t.false(autoinit('node', 'npm', 'install', 'test', '-g'), 'npm install -g');
+  t.false(autoinit('node', 'npm', 'i', 'test', '--global'), 'npm i --global');
+  t.false(autoinit('node', 'npm', 'v', 'npm-autoinit', 'keywords'), 'npm v');
+  t.false(autoinit('node', 'npm'), 'npm');
+  t.end();
 });

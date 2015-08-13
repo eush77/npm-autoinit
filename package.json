@@ -39,6 +39,7 @@
     "init-package-json": "^1.7.1"
   },
   "devDependencies": {
+    "falafel": "^1.2.0",
     "rewire": "^2.3.4",
     "tape": "^4.0.3"
   }
